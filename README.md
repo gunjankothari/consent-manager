@@ -221,6 +221,13 @@ Default: `bottom`
 
 The vertical position of the consent banner on the screen. Possible values are `top` or `bottom`
 
+##### bannerWidth
+
+Type: `string`<br>
+Default: `300px`
+
+Width of the Consent banner.
+
 ##### privacyPolicyContent
 
 Type: `PropTypes.node`
