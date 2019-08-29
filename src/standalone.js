@@ -50,14 +50,6 @@ if (!props.bannerContent) {
   throw new Error('ConsentManager: bannerContent is required')
 }
 
-if (!props.preferencesDialogContent) {
-  throw new Error('ConsentManager: preferencesDialogContent is required')
-}
-
-if (!props.cancelDialogContent) {
-  throw new Error('ConsentManager: cancelDialogContent is required')
-}
-
 if (typeof props.otherWriteKeys === 'string') {
   props.otherWriteKeys = props.otherWriteKeys.split(',')
 }

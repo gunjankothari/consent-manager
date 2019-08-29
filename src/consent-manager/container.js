@@ -66,6 +66,7 @@ export default class Container extends PureComponent {
     const advertisingDestinations = []
     const functionalDestinations = []
     const bannerStyle = {}
+    bannerStyle.zIndex = 1000
 
     if (bannerHorizontalPosition === 'left') {
       bannerStyle.left = 0
