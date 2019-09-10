@@ -36,6 +36,11 @@ if (window.consentManagerConfig) {
   props.preferencesDialogContent = dataset.preferencesdialogcontent
   props.cancelDialogTitle = dataset.canceldialogtitle
   props.cancelDialogContent = dataset.canceldialogcontent
+  props.privacyPolicyContent = dataset.privacypolicycontent
+}
+
+if (!props.privacyPolicyContent) {
+  throw new Error('ConsentManager: privacyPolicyContent is required')
 }
 
 if (!props.container) {

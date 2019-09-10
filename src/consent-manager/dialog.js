@@ -164,8 +164,11 @@ export default class Dialog extends PureComponent {
           </Header>
 
           <Form innerRef={this.handleFormRef} onSubmit={onSubmit}>
-            <Content>{children}</Content>
-
+            {typeof children === 'string' ? (
+              <Content dangerouslySetInnerHTML={{__html: children}} />
+            ) : (
+              <Content>{children}</Content>
+            )}
             <Buttons>{buttons}</Buttons>
           </Form>
         </Root>
