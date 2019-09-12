@@ -30,6 +30,7 @@ if (window.consentManagerConfig) {
   props.implyConsentOnInteraction = dataset.implyconsentoninteraction
   props.cookieDomain = dataset.cookiedomain
   props.bannerContent = dataset.bannercontent
+  props.bannerSubContent = dataset.bannersubcontent
   props.bannerTextColor = dataset.bannertextcolor
   props.bannerBackgroundColor = dataset.bannerbackgroundcolor
   props.preferencesDialogTitle = dataset.preferencesdialogtitle
@@ -37,6 +38,10 @@ if (window.consentManagerConfig) {
   props.cancelDialogTitle = dataset.canceldialogtitle
   props.cancelDialogContent = dataset.canceldialogcontent
   props.privacyPolicyContent = dataset.privacypolicycontent
+  props.privacyPolicyUrl = dataset.privacypolicyurl
+  props.bannerHorizontalPosition = dataset.bannerhorizontalposition
+  props.bannerVerticalPosition = dataset.bannerverticalposition
+  props.bannerWidth = dataset.bannerwidth
 }
 
 if (!props.privacyPolicyContent) {

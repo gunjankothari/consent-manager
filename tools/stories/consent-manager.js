@@ -80,6 +80,7 @@ export default () => {
         bannerSubContent={bannerSubContent}
         implyConsentOnInteraction={false}
         privacyPolicyContent={privacyPolicyContent}
+        privacyPolicyUrl="http://localhost:5000/standalone/privacy.txt"
         bannerBackgroundColor="blue"
         bannerHorizontalPosition="right"
         bannerVerticalPosition="bottom"

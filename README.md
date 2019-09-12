@@ -234,6 +234,12 @@ Type: `PropTypes.node`
 
 The Privacy Policy content to show in Privacy Policy Dialog.
 
+##### privacyPolicyUrl
+
+Type: `PropTypes.string`
+
+It will load the file content from the given text file path. Make sure you give the file path which supports cross-origin requests. 
+
 #### Example
 
 ```javascript
