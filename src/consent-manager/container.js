@@ -36,15 +36,36 @@ export default class Container extends PureComponent {
     bannerHorizontalPosition: PropTypes.string.isRequired,
     bannerVerticalPosition: PropTypes.string.isRequired,
     bannerWidth: PropTypes.string,
-    privacyPolicyContent: PropTypes.node.isRequired
+    privacyPolicyContent: PropTypes.node,
+    privacyPolicyUrl: PropTypes.string
   }
 
   static defaultProps = {
-    bannerWidth: null
+    bannerWidth: null,
+    privacyPolicyContent: '',
+    privacyPolicyUrl: ''
   }
 
   state = {
     shouldShowPrivacyPolicy: false
+  }
+
+  fetchPolicy(url) {
+    fetch(url)
+      .then(response => {
+        if (response.status === 200) {
+          return response.text()
+        }
+        return Promise.reject()
+      })
+      .then(privacyPolicyContent => {
+        this.setState({privacyPolicyContent})
+      })
+      .catch(() =>
+        this.setState({
+          privacyPolicyContent: 'Error while fetching Policy.'
+        })
+      )
   }
 
   render() {
@@ -58,10 +79,9 @@ export default class Container extends PureComponent {
       bannerBackgroundColor,
       bannerHorizontalPosition,
       bannerVerticalPosition,
-      bannerWidth,
-      privacyPolicyContent
+      bannerWidth
     } = this.props
-    const {shouldShowPrivacyPolicy} = this.state
+    const {shouldShowPrivacyPolicy, privacyPolicyContent} = this.state
     const marketingDestinations = []
     const advertisingDestinations = []
     const functionalDestinations = []
@@ -123,13 +143,23 @@ export default class Container extends PureComponent {
   }
 
   componentDidMount() {
-    const {isConsentRequired, implyConsentOnInteraction} = this.props
-
+    const {
+      isConsentRequired,
+      implyConsentOnInteraction,
+      privacyPolicyUrl,
+      privacyPolicyContent
+    } = this.props
     // Emitter.on("openDialog", this.openDialog);
 
     if (isConsentRequired && implyConsentOnInteraction) {
       document.body.addEventListener('click', this.handleBodyClick, false)
       document.addEventListener('mousedown', this.handleBodyClick, false)
+    }
+
+    if (privacyPolicyUrl) {
+      this.fetchPolicy(privacyPolicyUrl)
+    } else {
+      this.setState({privacyPolicyContent})
     }
   }
 
